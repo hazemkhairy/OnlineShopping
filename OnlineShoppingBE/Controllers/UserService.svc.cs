@@ -28,9 +28,14 @@ namespace OnlineShoppingBE.Controllers
         {
             return userBLL.Login(user);
         }
-        public bool isAdmin(string id)
+        public bool isAdmin(UserDTO user)
         {
-            return userBLL.isAdmin(int.Parse(id));
+            return userBLL.isAdmin(user);
+        }
+
+        public int getUserId(UserDTO user)
+        {
+            return userBLL.getUserId(user);
         }
     }
 }

@@ -19,7 +19,9 @@ namespace OnlineShoppingBE.Controllers
         ResponseResult Login(UserDTO user);
 
         [OperationContract]
-        bool isAdmin(string id);
+        bool isAdmin(UserDTO user);
+        [OperationContract]
+        int getUserId(UserDTO user);
 
 
     }

@@ -13,10 +13,10 @@ namespace OnlineShoppingBE.BLL
     {
         public OrderBLL()
         {
-            
+
         }
 
-        private List<KeyValuePair<int, int>> getProducts ( int orderID)
+        private List<KeyValuePair<int, int>> getProducts(int orderID)
         {
             using (ApplicationDbContext _context = new ApplicationDbContext())
             {
@@ -54,9 +54,9 @@ namespace OnlineShoppingBE.BLL
                     ID = order.User.ID,
                     Password = order.User.Password
                 },
-                    products = getProducts(order.ID)
-                };
-            
+                products = getProducts(order.ID)
+            };
+
         }
         public List<OrderDTO> GetAll(string userID)
         {
@@ -65,9 +65,9 @@ namespace OnlineShoppingBE.BLL
 
                 int id = int.Parse(userID);
                 User user = _context.Users.FirstOrDefault(u => u.ID == id);
-                
+
                 List<OrderDTO> allOrders = new List<OrderDTO>();
-                if (user.IsAdmin)
+                if (false)
                 {
                     List<Order> orders = _context.Orders.Include("PaymentType").Include("User").ToList();
                     for (int i = 0; i < orders.Count; i++)
@@ -95,7 +95,7 @@ namespace OnlineShoppingBE.BLL
             {
                 Order order = _context.Orders.Include("PaymentType").Include("User").FirstOrDefault(o => o.ID == int.Parse(orderID));
 
-                
+
                 return convertToDTO(order);
             }
         }
@@ -135,12 +135,22 @@ namespace OnlineShoppingBE.BLL
 
                 for (int i = 0; i < order.products.Count; i++)
                 {
-                    newOrder.TotalCost += _context.Items.FirstOrDefault(it => it.ID == order.products[i].Key).Cost * order.products[i].Value;
+                    int itemId = order.products[i].Key;
+                    Item temp = _context.Items.FirstOrDefault(it => it.ID == itemId);
+                    if (temp == null)
+                    {
+                        return new ResponseResult()
+                        {
+                            Message = "Item with id = " + order.products[i].Key.ToString() + " not exists",
+                            StatusCode = 404
+                        };
+                    }
+                    newOrder.TotalCost += temp.Cost * order.products[i].Value;
                 }
 
                 _context.Orders.Add(newOrder);
 
-
+                _context.SaveChanges();
                 for (int i = 0; i < order.products.Count; i++)
                 {
                     OrderItem orderitem = new OrderItem()

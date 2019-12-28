@@ -12,9 +12,9 @@ namespace OnlineShoppingBE.Controllers
     [ServiceContract]
     public interface IItemService
     {
-        [OperationContract]
-        ResponseResult Add(ItemDTO item);
-        [OperationContract]
+        [OperationContract(IsOneWay =true)]
+        void Add(ItemDTO item);
+        [OperationContract(IsOneWay = false)]
         ItemDTO GetItem(string id);
         [OperationContract]
         List<ItemDTO> GetItems(string categoryId);

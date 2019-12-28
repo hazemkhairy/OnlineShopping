@@ -59,16 +59,28 @@ namespace OnlineShoppingBE.BLL
                 { Message = "Login Succefully", StatusCode = 200 };
             }
         }
-        public bool isAdmin(int id)
+        public bool isAdmin(UserDTO user1)
         {
             using (var _context = new ApplicationDbContext())
             {
-                User user = _context.Users.FirstOrDefault(i => i.ID == id);
+                User user = _context.Users.FirstOrDefault(i => i.Email == user1.Email);
                 if (user != null && user.IsAdmin)
                 {
                     return true;
                 }
                 return false;
+            }
+        }
+        public int getUserId(UserDTO user1)
+        {
+            using (var _context = new ApplicationDbContext())
+            {
+                User user = _context.Users.FirstOrDefault(i => i.Email == user1.Email);
+                if (user != null )
+                {
+                    return user.ID;
+                }
+                return 0;
             }
         }
 

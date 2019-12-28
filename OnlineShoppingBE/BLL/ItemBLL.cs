@@ -68,7 +68,7 @@ namespace OnlineShoppingBE.BLL
                 return items;
             }
         }
-        public ResponseResult Add(ItemDTO item)
+        public void Add(ItemDTO item)
         {
             using (var _context = new ApplicationDbContext())
             {
@@ -79,8 +79,7 @@ namespace OnlineShoppingBE.BLL
                     if (item1 != null)
                     {
 
-                        return new ResponseResult()
-                        { Message = "Item Already Exists", StatusCode = 409 };
+                        return ;
                         
                     }
                 }
@@ -88,8 +87,7 @@ namespace OnlineShoppingBE.BLL
                 if (category == null)
                 {
 
-                    return new ResponseResult()
-                    { Message = "Category not found", StatusCode = 404 };
+                    return ;
                 }
                 item1 = new Item()
                 {
@@ -106,8 +104,7 @@ namespace OnlineShoppingBE.BLL
                 _context.Items.AddOrUpdate(item1);
                 _context.SaveChanges();
 
-                return new ResponseResult()
-                { Message = "Item Added Succesfully", StatusCode = 202 };
+                return ;
             }
         }
         public ResponseResult Delete(int itemID)

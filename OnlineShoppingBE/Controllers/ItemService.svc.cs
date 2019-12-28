@@ -18,9 +18,10 @@ namespace OnlineShoppingBE.Controllers
         {
             itemBLL = new ItemBLL();
         }
-        public ResponseResult Add(ItemDTO item)
+        public void Add(ItemDTO item)
         {
-            return itemBLL.Add(item);
+            itemBLL.Add(item);
+            
         }
 
         public ResponseResult Delete(string itemId)

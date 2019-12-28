@@ -181,11 +181,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ICategoryService.cs" />
     <Compile Include="Controllers\IItemService.cs" />
+    <Compile Include="Controllers\IOrderService.cs" />
     <Compile Include="Controllers\ItemService.svc.cs">
       <DependentUpon>ItemService.svc</DependentUpon>
     </Compile>
     <Compile Include="Controllers\IUserService.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderService.svc.cs">
+      <DependentUpon>OrderService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>
@@ -234,6 +238,18 @@
     <Compile Include="Migrations\201912212001346_checkForChanges.Designer.cs">
       <DependentUpon>201912212001346_checkForChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912220512544_PopulatePaymentTypeAndCategories.cs" />
+    <Compile Include="Migrations\201912220512544_PopulatePaymentTypeAndCategories.Designer.cs">
+      <DependentUpon>201912220512544_PopulatePaymentTypeAndCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912220530339_seedingUsers.cs" />
+    <Compile Include="Migrations\201912220530339_seedingUsers.Designer.cs">
+      <DependentUpon>201912220530339_seedingUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912281637554_PopulateUsers.cs" />
+    <Compile Include="Migrations\201912281637554_PopulateUsers.Designer.cs">
+      <DependentUpon>201912281637554_PopulateUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -254,6 +270,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controllers\CategoryService.svc" />
     <Content Include="Controllers\ItemService.svc" />
+    <Content Include="Controllers\OrderService.svc" />
     <Content Include="Controllers\UserService.svc" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -350,6 +367,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912212001346_checkForChanges.resx">
       <DependentUpon>201912212001346_checkForChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912220512544_PopulatePaymentTypeAndCategories.resx">
+      <DependentUpon>201912220512544_PopulatePaymentTypeAndCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912220530339_seedingUsers.resx">
+      <DependentUpon>201912220530339_seedingUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912281637554_PopulateUsers.resx">
+      <DependentUpon>201912281637554_PopulateUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
